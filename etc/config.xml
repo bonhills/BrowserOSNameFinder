@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<BonHills_BrowserOSNameFinder>
+			<version>0.0.1</version>
+		</BonHills_BrowserOSNameFinder>
+	</modules>
+
+	<!-- Configure our module's behavior in the global scope -->
+	<global>
+		<!-- Defining models -->
+		<models>
+			<!-- Unique identifier in the model's node. By convention, we put the module's name in lowercase. -->
+			<bonhills_browserosnamefinder>
+				<!-- The path to our models directory, with directory separators replaced by underscores -->
+				<class>BonHills_BrowserOSNameFinder_Model</class>
+			</bonhills_browserosnamefinder>
+		</models>
+
+		<!-- Defining an event observer -->
+		<events>
+			<!-- The code of the event we want to observe -->
+			<core_block_abstract_to_html_before> <!-- identifier of the event we want to catch -->
+				<!-- Defining an observer for this event -->
+				<observers>
+					<!-- Unique identifier within the catalog_product_save_after node. By 
+						convention, we write the module's name in lowercase. -->
+					<bonhills_browserosnamefinder_html_before_handler>
+						<!-- The model to be instantiated -->
+						<class>bonhills_browserosnamefinder/observer</class>
+						<!-- The method of the class to be called -->
+						<method>extendBodyClass</method>
+						<!-- The type of class to instantiate -->
+						<type>singleton</type>
+					</bonhills_browserosnamefinder_html_before_handler>
+				</observers>
+			</core_block_abstract_to_html_before>
+		</events>
+		<helpers>
+            <browserosnamefinder>
+                <class>BonHills_BrowserOSNameFinder_Helper</class>
+            </browserosnamefinder>
+        </helpers>
+	</global>
+	<default>
+        <bf_menu>
+            <bf_general>
+                <bf_browser_name>browser</bf_browser_name>
+                <bf_os_name>os</bf_os_name>
+                <bf_admin_also>0</bf_admin_also>
+            </bf_general>
+        </bf_menu>
+    </default>
+</config>
